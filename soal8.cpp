@@ -1,55 +1,52 @@
 #include <iostream>
+#include <string>
 using namespace std;
 
-void sebutSatuan(int n) {
-    if (n == 1) cout << "satu";
-    else if (n == 2) cout << "dua";
-    else if (n == 3) cout << "tiga";
-    else if (n == 4) cout << "empat";
-    else if (n == 5) cout << "lima";
-    else if (n == 6) cout << "enam";
-    else if (n == 7) cout << "tujuh";
-    else if (n == 8) cout << "delapan";
-    else if (n == 9) cout << "sembilan";
+void inputTim(string tim[], int &jumlah) {
+    cout << "Masukkan jumlah tim: ";
+    cin >> jumlah;
+    cin.ignore();
+    for (int i = 0; i < jumlah; i++) {
+        cout << "Nama tim ke-" << i + 1 << " : ";
+        getline(cin, tim[i]);
+    }
 }
 
-void terbilang(int n) {
-    if (n >= 1 && n <= 9) {
-        sebutSatuan(n);
-    } else if (n == 10) {
-        cout << "sepuluh";
-    } else if (n == 11) {
-        cout << "sebelas";
-    } else if (n >= 12 && n <= 19) {
-        sebutSatuan(n % 10);
-        cout << " belas";
-    } else if (n >= 20 && n <= 99) {
-        sebutSatuan(n / 10);
-        cout << " puluh";
-        if (n % 10 != 0) {
-            cout << " ";
-            sebutSatuan(n % 10);
-        }
-    } else {
-        cout << "di luar jangkauan";
+void tampilTim(string tim[], int jumlah) {
+    int i = 0;
+    while (i < jumlah) {
+        cout << "Tim ke-" << i + 1 << " : " << tim[i] << endl;
+        i++;
     }
 }
 
 int main() {
-    int angka;
-    char ulang;
+    string tim[50];
+    int jumlah = 0;
+    int pilih;
+    bool jalan = true;
 
-    do {
-        cout << "Masukkan angka : ";
-        cin >> angka;
+    while (jalan) {
+        cout << "Menu Pengelolaan Tim Piala Dunia" << endl;
+        cout << "1. Input data tim" << endl;
+        cout << "2. Tampilkan data tim" << endl;
+        cout << "3. Keluar" << endl;
+        cout << "Pilih menu: ";
+        cin >> pilih;
+        cin.ignore();
 
-        cout << "Terbilang : ";
-        terbilang(angka);
+        if (pilih == 1) {
+            inputTim(tim, jumlah);
+        } else if (pilih == 2) {
+            tampilTim(tim, jumlah);
+        } else if (pilih == 3) {
+            jalan = false;
+        } else {
+            cout << "Menu tidak valid" << endl;
+        }
+
         cout << endl;
-
-        cout << "Ulangi (y/t)? ";
-        cin >> ulang;
-    } while (ulang == 'y' || ulang == 'Y');
+    }
 
     return 0;
 }
