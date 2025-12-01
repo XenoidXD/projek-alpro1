@@ -34,22 +34,22 @@ int main(){
         cout<<"List : {\"batu\", \"gunting\", \"kertas\"}, {'n' untuk keluar}\n";
         cout<<"Kamu : "; cin>>playerOpsi;
         
+        if(playerOpsi == "n"){
+            cout<<"Program Selesai..\n";
+            return 0;
+        }
+
         for(int i=0;i<3;i++){
-            if(playerOpsi == opsi[i] || playerOpsi == "n"){
+            if(playerOpsi == opsi[i]){
                 isValid = true;
                 break;
             }
         }
         
         if(isValid){
-            if(playerOpsi == "n"){
-                cout<<"Program Selesai..\n";
-                return 0;
-            } else{
-                cout<<"Computer : "<<botOpsi<<endl;
-                hasil = cekKemenangan(playerOpsi, botOpsi);
-                cout<<hasil<<endl;
-            }
+            cout<<"Computer : "<<botOpsi<<endl;
+            hasil = cekKemenangan(playerOpsi, botOpsi);
+            cout<<hasil<<endl;
         } else{
             cout<<"Input tidak valid\n";
         }
