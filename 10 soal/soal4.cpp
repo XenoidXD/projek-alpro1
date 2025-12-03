@@ -21,11 +21,7 @@ int main() {
 
     Konversi(bilangan, &km, &m, &cm, &mm);
 
-    cout << "Hasil konversi:" << endl;
-    cout << "Kilometer : " << km << " km" << endl;
-    cout << "Meter     : " << m << " m" << endl;
-    cout << "Centimeter: " << cm << " cm" << endl;
-    cout << "Milimeter : " << mm << " mm" << endl;
+    cout << "Hasil konversi: " << km << " km, " << m << " m, "<< cm << " cm, "<< mm << " mm" << endl;
 
     return 0;
 }
