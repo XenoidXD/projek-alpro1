@@ -1,28 +1,50 @@
 #include <iostream>
 using namespace std;
 
-void prosesKalimat(char teks[]) {
-    char hasil[201];
-    int i = 0;
-    while (teks[i] != '\0') {
-        char c = teks[i];
-        if (c >= 'a' && c <= 'z') {
-            hasil[i] = c - 'a' + 'A';
-        } else if (c >= 'A' && c <= 'Z') {
-            hasil[i] = c - 'A' + 'a';
+void prosesKalimat(char kalimat[]) {
+    char hasil[200];
+    int i = 0, j = 0, k = 0;
+
+    char kata[20][50];
+    int jumlahKata = 0;
+
+    while (kalimat[i] != '\0') {
+        if (kalimat[i] != ' ') {
+            kata[jumlahKata][k] = kalimat[i];
+            k++;
         } else {
-            hasil[i] = c;
+            kata[jumlahKata][k] = '\0';
+            jumlahKata++;
+            k = 0;
         }
         i++;
     }
-    hasil[i] = '\0';
-    cout << "Kalimat baru: " << hasil << endl;
+
+    kata[jumlahKata][k] = '\0';
+    jumlahKata++;
+
+    int idx = 0;
+    for (int a = jumlahKata - 1; a >= 0; a--) {
+        int b = 0;
+        while (kata[a][b] != '\0') {
+            hasil[idx] = kata[a][b];
+            idx++;
+            b++;
+        }
+        if (a > 0) {
+            hasil[idx] = ' ';
+            idx++;
+        }
+    }
+    hasil[idx] = '\0';
+
+    cout << "hasil   = " << hasil << endl;
 }
 
 int main() {
-    char kalimat[201];
+    char kalimat[200];
 
-    cout << "Masukkan sebuah kalimat: ";
+    cout << "kalimat = ";
     cin.getline(kalimat, 200);
 
     prosesKalimat(kalimat);
